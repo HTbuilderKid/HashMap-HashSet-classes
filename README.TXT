@@ -19,3 +19,5 @@ Some of these methods include:
 30. As mentioned in question 24, we just have to check it using containsKey()
 
 31. Then the get() method will return null
+
+32. We can use keySet() to loop through it
