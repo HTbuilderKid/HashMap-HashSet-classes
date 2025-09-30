@@ -19,19 +19,15 @@ public class InputReader
     {
         reader = new Scanner(System.in);
     }
-
-    /**
-     * Read a line of text from standard input (the text terminal),
-     * and return it as a String.
-     *
-     * @return  A String typed by the user.
-     */
-    public String getInput()
+    public HashSet<String> getInput()
     {
-        // print prompt
-        System.out.print("> ");         
-        String inputLine = reader.nextLine();
-
-        return inputLine;
+        System.out.println(">");
+        String line = reader.nextLine();
+        String[] words = line.split(" ");
+        HashSet<String> set = new HashSet<>();
+        for(String w : words) {
+            set.add(w);
+        }
+        return set;
     }
 }
