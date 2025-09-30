@@ -18,18 +18,41 @@ public class Responder
     {
         responses = new HashMap<>();
         lastDefaultResponse = "";
-        responses.put("slow", "Try turning off your computer.");
+        String[] slowWords = {"slow", "lag", "sluggish"};
+        for(String word : slowWords) {
+            responses.put(word, "Try turning off your computer.");
+        }
         responses.put("crash", "Call a real tech support.");
         responses.put("error", "What's the error message?");
     }
     
     public String generateResponse(HashSet<String> words)
     {
+        int matches = 0;
+        String lastMatchResponse = "";
         for(String word : words) {
             if(responses.containsKey(word)) {
-                return responses.get(word);
+                matches++;
+                lastMatchResponse = responses.get(word);
             }
         }
+        if(matches > 1) {
+            return "Well, looks like there are several issues. Let's solve them one by one.";
+        } else if(matches == 1) {
+            return lastMatchResponse;
+        }
+
+        HashSet<String> questionWords = new HashSet<>();
+        questionWords.add("why");
+        questionWords.add("how");
+        questionWords.add("who");
+        
+        for(String word : words) {
+            if(questionWords.contains(word)) {
+                return "Alright, give me more details.";
+            }
+        }
+        
         String default1 = "Could you be more specific?";
         String default2 = "Please explain in more detail.";
         
