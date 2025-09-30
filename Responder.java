@@ -10,14 +10,17 @@ import java.util.HashSet;
 public class Responder
 {
     private HashMap<String, String> responses;
+    private String lastDefaultResponse;
     /**
      * Construct a Responder - nothing to do
      */
     public Responder()
     {
         responses = new HashMap<>();
+        lastDefaultResponse = "";
         responses.put("slow", "Try turning off your computer.");
         responses.put("crash", "Call a real tech support.");
+        responses.put("error", "What's the error message?");
     }
     
     public String generateResponse(HashSet<String> words)
@@ -27,7 +30,15 @@ public class Responder
                 return responses.get(word);
             }
         }
-        return "Could you be more specific?";
+        String default1 = "Could you be more specific?";
+        String default2 = "Please explain in more detail.";
+        
+        if(lastDefaultResponse.equals(default1)) {
+            lastDefaultResponse = default2;
+        } else {
+            lastDefaultResponse = default1;
+        }
+        return lastDefaultResponse;
     }
 }
 
