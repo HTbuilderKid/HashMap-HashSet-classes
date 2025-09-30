@@ -12,3 +12,12 @@ Some of these methods include:
 
 26. We can check for the amount of entries contained in a map with the size method: map.size()
 
+28. If you do that, the old value will get replaced with the new one
+
+29. Both entries will be stored separately, and each will have a unique value
+
+30. As mentioned in question 24, we just have to check it using containsKey()
+
+31. Then the get() method will return null
+
+32. We can use keySet() to loop through it
