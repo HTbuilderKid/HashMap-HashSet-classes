@@ -21,3 +21,7 @@ Some of these methods include:
 31. Then the get() method will return null
 
 32. We can use keySet() to loop through it
+
+
+35. When using ArrayList, the words you added appear in the exact order that you added them, while in HashSet, there is no specific order, and any dupplicate gets automatically removed. 
+So, for examplem, if we inserted ["red", "blue", "red"], ArrayList: ["red", "blue", "red"], while HashSet: ["red", "blue] or ["blue", red"]
